@@ -10,6 +10,7 @@ namespace DevelopHerShani
         public int level;
         public int power;
         public int hp;
+        public int lifeC = 10;
 
         public Player CreatePlayer(Player player)
 		{
@@ -23,7 +24,7 @@ namespace DevelopHerShani
 
         public int Attack(Monster monster, Player player)
         {
-            return player.power--;
+            return player.power -= 10;
         }
 
         public int GetAttacked (Monster monster, Player player)

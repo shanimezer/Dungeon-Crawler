@@ -41,14 +41,29 @@ namespace DevelopHerShani
                 }
                 else
                 {
-                    Console.WriteLine("Be Greatfull cause I brout you back to life!");
-                    gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
-                    Play(gamePlay);
-                    break;
+                    if (gamePlay.player.lifeC > 1)
+                    {
+                        gamePlay.player.lifeC--;
+                        Console.WriteLine($"Be Greatfull cause I brout you back to life! You have {gamePlay.player.lifeC} more chances left.");
+                        gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
+                        Play(gamePlay);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You have died for real this time. Oh well, maybe the after life are fine as well. Bye!");
+                        break;
+                    }
+                   
                 }
 
             }
-            Console.WriteLine($"You are the Dungeon Crawler Champion!! Game Over.");
+            if (gamePlay.player.lifeC > 0)
+            {
+                //funny bug which I don't know how to fix at the moment. It prints it all over again each time after the code reaches break.
+                Console.WriteLine($"You are the Dungeon Crawler Champion!! Game Over.");
+            } 
+           
         }
     }
 
