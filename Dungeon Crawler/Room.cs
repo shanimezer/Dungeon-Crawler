@@ -8,9 +8,10 @@ namespace DevelopHerShani
 
 		public Room CreateRoom(Room room, int id)
 		{
+			int level = id + 1;
 			room.currentMonster = new Monster();
-			room.currentMonster = currentMonster.CreateMonster(currentMonster);
-			room.displayTxt = (id+1).ToString(); // Rooms Id for now.
+			room.currentMonster = room.currentMonster.CreateMonster(room.currentMonster, level); ;
+			room.displayTxt = level.ToString(); // Rooms Id for now.
 
 			return room;
 		}
@@ -18,37 +19,39 @@ namespace DevelopHerShani
 		public bool isWin (Player player, Room room)
 		{
 			bool isPlayerTurn = true;
-			Console.WriteLine("Let the Battle Begine!");
+			room.currentMonster.ResetMonster(room.currentMonster);
+
+            Console.WriteLine("Let the Battle Begine!");
 			Console.ReadLine();
 
 	
-			while (player.hp > 0 && currentMonster.hp > 0)
+			while (player.hp > 0 && room.currentMonster.currentHp > 0)
 			{
 			
 				if (isPlayerTurn)
 				{
                     Console.WriteLine("It's your turn! Kill it you hear me?!");
-                    player.power = player.Attack(currentMonster, player);
-					currentMonster.hp = currentMonster.GetAttacked(currentMonster, player);
-                    Console.WriteLine($"Keep up: your power is : {player.power} and your hp is: {player.hp}");
-                    Console.WriteLine($"Monster's stats: power: {currentMonster.power} , hp is: {currentMonster.hp}");
+					currentMonster.currentHp = room.currentMonster.GetAttacked(room.currentMonster, player);
+                    player.power = player.Attack(room.currentMonster, player);
+                    Console.WriteLine($"Keep up: your power is : {player.power} and your currentHp is: {player.hp}");
+                    Console.WriteLine($"Monster's stats: power: {room.currentMonster.currentPower} , hp is: {room.currentMonster.currentHp}");
 
                 }
 				else
 				{
                     Console.WriteLine("Be Carefull from the monster!");
-                    player.hp = player.GetAttacked(currentMonster, player);
-                    currentMonster.power = currentMonster.Attack(currentMonster, player);
+                    player.hp = player.GetAttacked(room.currentMonster, player);
+                    room.currentMonster.currentPower = room.currentMonster.Attack(room.currentMonster, player);
                     Console.WriteLine($"Your stats are: your power is {player.power} and your hp is {player.hp}");
-                    Console.WriteLine($"Monster's stats: power : {currentMonster.power}, hp : {currentMonster.hp}");
+                    Console.WriteLine($"Monster's stats: power : {room.currentMonster.currentPower}, hp : {room.currentMonster.currentHp}");
                 }
 
                 isPlayerTurn = !isPlayerTurn;
 			}
 
-         //   If monster hp equals or lower then 0 => player levels up and moves to the next room
+         //   If monster currentHp equals or lower then 0 => player levels up and moves to the next room
 
-			if (currentMonster.hp <= 0 )
+			if (room.currentMonster.currentHp <= 0 )
 			{
 				player.level++;
                 Console.WriteLine($"You made it! Youv'e leveled up to level {player.level}!");

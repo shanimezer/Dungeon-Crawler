@@ -3,26 +3,37 @@ namespace DevelopHerShani
 {
 	public class Monster
 	{
-        public int hp;
-        public int power;
+        private int OriginHp;
+        public int currentHp;
+        private int OriginPower;
+        public int currentPower;
 
-		public Monster CreateMonster (Monster monster)
+
+        public Monster CreateMonster(Monster monster, int level)
 		{
             Random rnd = new Random();
-            monster.power = rnd.Next(50, 500);
-            monster.hp = rnd.Next(50, 700);
-            Console.WriteLine($"Monster stats : power is : {monster.power} and hp is : {monster.hp}");
+            monster.currentPower = rnd.Next(20, 40*level);
+            monster.OriginPower = monster.currentPower;
+            monster.currentHp = rnd.Next(30, 50*level);
+            monster.OriginHp = monster.currentHp;   
+            Console.WriteLine($"Monster stats : power is : {monster.OriginPower} and hp is : {monster.OriginHp}");
             return monster;
         }
 
         public int Attack(Monster monster, Player player)
         {
-            return monster.power -= 10;
+            return monster.currentPower -=10 ;
         }
 
         public int GetAttacked(Monster monster, Player player)
         {
-            return monster.hp -= player.power ;
+            return monster.currentHp -= player.power ;
+        }
+
+        public void ResetMonster (Monster monster)
+        {
+            monster.currentPower = monster.OriginPower;
+            monster.currentHp = monster.OriginHp;
         }
     }
 }

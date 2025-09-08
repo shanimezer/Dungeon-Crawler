@@ -29,7 +29,7 @@ namespace DevelopHerShani
 
         public int GetAttacked (Monster monster, Player player)
         {
-            return (player.hp - monster.power);
+            return (player.hp - monster.currentPower);
         }
 
         public Player ResetStats(Player player,int level)

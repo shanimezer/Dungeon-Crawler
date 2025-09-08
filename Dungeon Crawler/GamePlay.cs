@@ -58,7 +58,7 @@ namespace DevelopHerShani
                 }
 
             }
-            if (gamePlay.player.lifeC > 0)
+            if (gamePlay.player.lifeC > 1)
             {
                 //funny bug which I don't know how to fix at the moment. It prints it all over again each time after the code reaches break.
                 Console.WriteLine($"You are the Dungeon Crawler Champion!! Game Over.");
