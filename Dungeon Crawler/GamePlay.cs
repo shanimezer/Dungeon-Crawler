@@ -29,18 +29,20 @@ namespace DevelopHerShani
             foreach (Room r in gamePlay.corridor.rooms)
             {
                 Console.WriteLine($"Welcome to room Number {r.displayTxt}! Now take that monster down mate!");
-               int newLevel =  r.Fight(gamePlay.player, r);
+               bool isWin =  r.isWin(gamePlay.player, r);
 
                 //If monster hp equals or lower then 0 => player levels up and moves to the next room
                 //If player equals or lower then = 0 => player starts the run over(running all the rooms all over again and all monsters should regain their original state) but keeps his levels and stats
-                if (newLevel > gamePlay.player.level)
+                if (isWin)
                 {
-                    gamePlay.player.level = newLevel;
-
-                    Console.WriteLine($"You made it! Youv'e leveled up to level {gamePlay.player.level}!");
+                    Console.WriteLine("You've made it to the next room. Good Luck Rockstar!");
+                    
+                    gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
                 }
                 else
                 {
+                    Console.WriteLine("Be Greatfull cause I brout you back to life!");
+                    gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
                     Play(gamePlay);
                     break;
                 }

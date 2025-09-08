@@ -9,8 +9,9 @@ namespace DevelopHerShani
 		public Monster CreateMonster (Monster monster)
 		{
             Random rnd = new Random();
-            monster.power = rnd.Next(50, 300);
-            monster.hp = rnd.Next(100, 300);
+            monster.power = rnd.Next(50, 100);
+            monster.hp = rnd.Next(50, 100);
+            Console.WriteLine($"Monster stats : power is : {monster.power} and hp is : {monster.hp}");
             return monster;
         }
 
@@ -21,7 +22,7 @@ namespace DevelopHerShani
 
         public int GetAttacked(Monster monster, Player player)
         {
-            return monster.hp--;
+            return monster.hp -= player.power ;
         }
     }
 }

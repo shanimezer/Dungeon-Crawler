@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Threading;
 
 namespace DevelopHerShani
 {
@@ -15,7 +16,9 @@ namespace DevelopHerShani
             player.hp = 100;
             player.power = 50;
             player.level = 1;
+            Console.WriteLine($"Your stats are:  power is : {player.power} , hp is  :{player.hp}");
             return player;
+           
         }
 
         public int Attack(Monster monster, Player player)
@@ -27,6 +30,16 @@ namespace DevelopHerShani
         {
             return (player.hp - monster.power);
         }
+
+        public Player ResetStats(Player player,int level)
+        {
+            player.hp = 100*level;
+            player.power = 50*level;
+            player.level = level;
+            Console.WriteLine($"Your level is {level}, your power is: {player.power} and your hp is {player.hp}");
+            return player;
+        }
+
     }
 }
 
