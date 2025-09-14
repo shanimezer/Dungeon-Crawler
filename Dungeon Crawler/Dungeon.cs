@@ -14,13 +14,44 @@ public class Dungeon
         learn more about using list in list to represent a grid here:
         **/
 
-    public Corridor[,] corridors;
+    public Room [,] rooms;
+    public int  rLength;
+    public int  cLength;
 
-    public Dungeon
+    public Dungeon CreateDungeon(Dungeon dungeon)
     {
        Random rnd= new Random();
-        int r = rnd.Next(1, 7);
-        int c = rnd.Next(1, 7);
-        corridors = new Corridor[r, c];
+        dungeon.rLength = rnd.Next(1, 7);
+        dungeon.cLength = rnd.Next(1, 7);
+        
+        dungeon.rooms = new Room[dungeon.rLength, dungeon.cLength];
+
+        for (int row = 0; row < dungeon.rLength; row++) 
+        {
+            for (int col = 0; col < dungeon.cLength; col++)
+            {
+                dungeon.rooms[row,col] = new Room();
+                dungeon.rooms[row,col].CreateRoom(dungeon.rooms[row,col], col, row);
+              
+            }
+        }
+        return dungeon;
+    }
+
+    public static void ResetDungeon(Dungeon dungeon)
+    {
+        for (int row = 0; row < dungeon.rLength; row++)
+        {
+            for (int col = 0; col < dungeon.cLength; col++)
+            {
+                dungeon.rooms[row, col].hasBeenHere = false;
+                dungeon.rooms[row, col].isMonsterAlive = true;
+            }
+        } 
+    }
+
+    public static void displayDungeonMap(Dungeon dungeon)
+    {
+        
     }
 }

@@ -1,25 +1,24 @@
 ﻿using System;
+
 namespace DevelopHerShani
 {
 	public class Corridor
 	{
 		public List<Room> rooms { get; set; }
 
-		public Corridor CreateCorridor(Corridor corridor)
+		public Corridor CreateCorridor(Corridor corridor, int rLength)
 		{
 			corridor.rooms = new List<Room>();
 
-			Random rnd = new Random();
-			int numberOfRooms = rnd.Next(2, 10);
-
-			for (int i=0; i<numberOfRooms; i++)
+			for (int i = 0; i < rLength; i++)
 			{
 				Room room = new Room();
-				corridor.rooms.Add(room.CreateRoom(room,i));
+				corridor.rooms.Add(room.CreateRoom(room, i,0));
 			}
-			
+
 			return corridor;
 		}
 	}
+}
 
 
