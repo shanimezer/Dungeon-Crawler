@@ -6,7 +6,6 @@ namespace DevelopHerShani
 {
 	public class Player
 	{
-
         public int level;
         public int power;
         public int hp;

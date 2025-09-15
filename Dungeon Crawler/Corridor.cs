@@ -9,7 +9,6 @@ namespace DevelopHerShani
 		public Corridor CreateCorridor(Corridor corridor, int rLength)
 		{
 			corridor.rooms = new List<Room>();
-
 			for (int i = 0; i < rLength; i++)
 			{
 				Room room = new Room();

@@ -39,7 +39,6 @@ namespace DevelopHerShani
                 if (isWin)
                 {
                     Console.WriteLine("You've made it to the next room. Good Luck Rockstar!");
-                    
                     gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
                 }
                 else if (!gamePlay.dungeon.rooms[r, c].isMonsterAlive)

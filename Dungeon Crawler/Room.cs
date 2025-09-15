@@ -20,8 +20,6 @@ namespace DevelopHerShani
 			room.currentMonster = room.currentMonster.CreateMonster(room.currentMonster, room.level);
 			isMonsterAlive = true;
 			
-		
-
 			return room;
 		}
 
