@@ -7,8 +7,7 @@ namespace DevelopHerShani
         public int currentHp;
         private int OriginPower;
         public int currentPower;
-
-
+        
         public Monster CreateMonster(Monster monster, int level)
 		{
             Random rnd = new Random();

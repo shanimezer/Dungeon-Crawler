@@ -13,7 +13,6 @@ public class Dungeon
     if I get to the bottom right corner I win.
         learn more about using list in list to represent a grid here:
         **/
-
     public Room [,] rooms;
     public int  rLength;
     public int  cLength;
