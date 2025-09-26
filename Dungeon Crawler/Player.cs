@@ -13,12 +13,13 @@ namespace DevelopHerShani
         public int lifeC = 10;
         public int score;
 
-        public Player CreatePlayer(Player player)
+        public Player CreatePlayer()
 		{
+            Player player = new Player();
             player.hp = 100;
             player.power = 50;
             player.level = 1;
-            Console.WriteLine($"Your stats are:  power is : {player.power} , hp is  :{player.hp}");
+            Console.WriteLine($"Your stats are:  power is : {power} , hp is  :{hp}");
             return player;
            
         }
