@@ -13,7 +13,7 @@ namespace DevelopHerShani
 			for (int i = 0; i < rLength; i++)
 			{
 				Room room = new Room();
-				corridor.rooms.Add(room.CreateRoom(room, i,0));
+				corridor.rooms.Add(room.CreateRoom(i,0));
 			}
 
 			return corridor;

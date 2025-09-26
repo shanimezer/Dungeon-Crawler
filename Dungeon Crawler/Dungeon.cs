@@ -18,8 +18,9 @@ public class Dungeon
     public int  rLength;
     public int  cLength;
 
-    public Dungeon CreateDungeon(Dungeon dungeon)
-    {
+    public Dungeon CreateDungeon()
+    { 
+        Dungeon dungeon = new Dungeon(); 
        Random rnd= new Random();
         dungeon.rLength = rnd.Next(1, 7);
         dungeon.cLength = rnd.Next(1, 7);
@@ -30,9 +31,7 @@ public class Dungeon
         {
             for (int col = 0; col < dungeon.cLength; col++)
             {
-                dungeon.rooms[row,col] = new Room();
-                dungeon.rooms[row,col].CreateRoom(dungeon.rooms[row,col], col, row);
-              
+                dungeon.rooms[row,col] =  new Room().CreateRoom(col, row);
             }
         }
         return dungeon;

@@ -9,12 +9,13 @@ namespace DevelopHerShani
         public int currentPower;
 
 
-        public Monster CreateMonster(Monster monster, int level)
+        public Monster CreateMonster(int roomlevel)
 		{
+            Monster monster = new Monster();
             Random rnd = new Random();
-            monster.currentPower = rnd.Next(20, 40*level);
+            monster.currentPower = rnd.Next(20, 40*roomlevel);
             monster.OriginPower = monster.currentPower;
-            monster.currentHp = rnd.Next(30, 50*level);
+            monster.currentHp = rnd.Next(30, 50*roomlevel);
             monster.OriginHp = monster.currentHp;   
             Console.WriteLine($"Monster stats : power is : {monster.OriginPower} and hp is : {monster.OriginHp}");
             return monster;

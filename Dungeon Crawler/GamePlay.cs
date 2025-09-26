@@ -12,11 +12,8 @@ namespace DevelopHerShani
         }
         public GamePlay()
 		{
-            player = new Player();
-            player.CreatePlayer(player);
-
-            dungeon = new Dungeon();
-            dungeon.CreateDungeon(dungeon);
+            player = new Player().CreatePlayer();
+            dungeon = new Dungeon().CreateDungeon();
 		}
         
 //wee need to let the player the possibility to choose a room to explore if they already were in that room - the monster should stay dead. Else if the player lost and got to [0,0] all monsters should re-live. 

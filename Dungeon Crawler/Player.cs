@@ -12,6 +12,7 @@ namespace DevelopHerShani
         public int hp;
         public int lifeC = 10;
         public int score;
+        public int xp;
 
         public Player CreatePlayer()
 		{
