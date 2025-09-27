@@ -1,66 +1,69 @@
 ﻿using System;
 namespace DevelopHerShani
 {
-	public class GamePlay
+	public class Program
 	{
         public Player player;
         public Dungeon dungeon;
+        public Actions actions;
 
          static void Main()
         {
-           Play(new GamePlay()); 
+           Play(new Program()); 
         }
-        public GamePlay()
+        public Program()
 		{
             player = new Player().CreatePlayer();
             dungeon = new Dungeon().CreateDungeon();
-		}
+            actions = new Actions().SetActionsStats();
+        }
         
-        public static void Play(GamePlay gamePlay)
+        public static void Play(Program program)
         {
             int r;
             int c;
-            while (gamePlay.player.lifeC > 1 && gamePlay.player.score < gamePlay.dungeon.rooms.Length)
+            while (program.player.lifeC > 1 && program.player.score < program.dungeon.rooms.Length)
             {
                 
                 Console.WriteLine("");
-                Dungeon.DisplayDungeonMap(gamePlay.dungeon);
+                Dungeon.DisplayDungeonMap(program.dungeon);
                 Console.WriteLine("Which Room would you like to explore?");
                 r = ReadValidIntFronUser("Enter room's row number: ") - 1;
                 c = ReadValidIntFronUser("Enter room's column number: ") - 1;
                 
-                Console.WriteLine($"Welcome to the room at : {gamePlay.dungeon.rooms[r,c].displayTxt}! Now take that monster down mate!");
-               bool isWin =  gamePlay.player.Fight(gamePlay.player,  gamePlay.dungeon.rooms[r,c]);
+                Console.WriteLine($"Welcome to the room at : {program.dungeon.rooms[r,c].displayTxt}");
+                Console.WriteLine("Now take that monster down ;) ");
+               bool isWin =  program.player.Fight(program.player,  program.dungeon.rooms[r,c], program.actions);
                
                 if (isWin)
                 {
                     Console.WriteLine("You've made it to the next room. Good Luck Rockstar!");
                     
-                    gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
+                    program.player.ResetStats(program.player, program.player.level);
                 }
-                else if (!gamePlay.dungeon.rooms[r, c].isMonsterAlive)
+                else if (!program.dungeon.rooms[r, c].isMonsterAlive)
                 {
-                    Console.WriteLine("You've already killed the monster. pick up another room!");
+                    Console.WriteLine("You've already killed that monster. pick up another room!");
                     continue;
                 }
-                else if (gamePlay.player.lifeC > 1)
+                else if (program.player.lifeC > 1)
                 {
-                    gamePlay.player.score = 0;
-                    gamePlay.player.lifeC--;
-                    Console.WriteLine($"Be greatfull cause I brought you back to life! You have {gamePlay.player.lifeC} more chances left.");
-                    Console.WriteLine($"Be-wear. You're not the only one who was brought back to life.. You have to kill all the monsters all over again. OOpsi.. Enjoy :) ");
+                    program.player.score = 0;
+                    program.player.lifeC--;
+                    Console.WriteLine($"Be greatfull - I brought you back to life! You have {program.player.lifeC} more chances left.");
+                    Console.WriteLine($"Be-wear. You're not the only one who was brought back to life.. You have to kill each monster all over again. OOpsi.. Enjoy :) ");
 
-                    gamePlay.player.ResetStats(gamePlay.player, gamePlay.player.level);
-                    Play(gamePlay);
+                    program.player.ResetStats(program.player, program.player.level);
+                    Play(program);
                     break;
                 }
                 else
                 {
-                    Console.WriteLine($"You have died for real this time. Oh well, maybe the after life are fine as well. Bye!");
+                    Console.WriteLine($"You have died FOR REAL! Oh well, maybe the after life are fine as well. Ba-Bye!");
                     break;
                 }
             }
-            if (gamePlay.player.lifeC > 1)
+            if (program.player.lifeC > 1)
             {
                 Console.WriteLine($"You are the Dungeon Crawler Champion!! Game Over.");
             } 

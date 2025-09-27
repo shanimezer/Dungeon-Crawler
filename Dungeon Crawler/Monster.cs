@@ -1,40 +1,28 @@
 ﻿using System;
 namespace DevelopHerShani
 {
-	public class Monster
+	public class Monster : Character
 	{
-        private int OriginHp;
-        public int currentHp;
-        private int OriginPower;
-        public int currentPower;
-
-
+        public int OriginHp;
+        public int OriginPower;
+        
         public Monster CreateMonster(int roomlevel)
 		{
             Monster monster = new Monster();
             Random rnd = new Random();
-            monster.currentPower = rnd.Next(20, 40*roomlevel);
-            monster.OriginPower = monster.currentPower;
-            monster.currentHp = rnd.Next(30, 50*roomlevel);
-            monster.OriginHp = monster.currentHp;   
-            Console.WriteLine($"Monster stats : power is : {monster.OriginPower} and hp is : {monster.OriginHp}");
+            monster.power = rnd.Next(20, 100*roomlevel);
+            monster.OriginPower = monster.power;
+            monster.hp = rnd.Next(30, 100*roomlevel);
+            monster.OriginHp = monster.hp;   
+            monster.ID = "Monster" + roomlevel.ToString();
+            Console.WriteLine($"Monster stats : power is : {monster.power} and hp is : {monster.hp}");
             return monster;
         }
-
-        public int Attack(Monster monster, Player player)
-        {
-            return monster.currentPower -=10 ;
-        }
-
-        public int GetAttacked(Monster monster, Player player)
-        {
-            return monster.currentHp -= player.power ;
-        }
-
+        
         public void ResetMonster (Monster monster)
         {
-            monster.currentPower = monster.OriginPower;
-            monster.currentHp = monster.OriginHp;
+            monster.power = monster.OriginPower;
+            monster.hp = monster.OriginHp;
         }
     }
 }
