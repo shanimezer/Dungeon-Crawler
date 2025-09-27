@@ -43,7 +43,6 @@ public class Dungeon
         {
             for (int col = 0; col < dungeon.cLength; col++)
             {
-                dungeon.rooms[row, col].hasBeenHere = false;
                 dungeon.rooms[row, col].isMonsterAlive = true;
             }
         } 

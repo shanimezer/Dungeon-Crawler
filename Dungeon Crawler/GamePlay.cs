@@ -16,7 +16,6 @@ namespace DevelopHerShani
             dungeon = new Dungeon().CreateDungeon();
 		}
         
-//wee need to let the player the possibility to choose a room to explore if they already were in that room - the monster should stay dead. Else if the player lost and got to [0,0] all monsters should re-live. 
         public static void Play(GamePlay gamePlay)
         {
             int r;
@@ -29,10 +28,8 @@ namespace DevelopHerShani
                 c = ReadValidIntFronUser("Enter room's column number: ") - 1;
                 
                 Console.WriteLine($"Welcome to the room at : {gamePlay.dungeon.rooms[r,c].displayTxt}! Now take that monster down mate!");
-               bool isWin =  gamePlay.dungeon.rooms[r,c].isWin(gamePlay.player,  gamePlay.dungeon.rooms[r,c]);
-
-                //If monster hp equals or lower then 0 => player levels up and moves to the next room
-                //If player equals or lower then = 0 => player starts the run over(running all the rooms all over again and all monsters should regain their original state) but keeps his levels and stats
+               bool isWin =  gamePlay.player.Fight(gamePlay.player,  gamePlay.dungeon.rooms[r,c]);
+               
                 if (isWin)
                 {
                     Console.WriteLine("You've made it to the next room. Good Luck Rockstar!");
@@ -63,7 +60,6 @@ namespace DevelopHerShani
             }
             if (gamePlay.player.lifeC > 1)
             {
-                //funny bug which I don't know how to fix at the moment. It prints it all over again each time after the code reaches break.
                 Console.WriteLine($"You are the Dungeon Crawler Champion!! Game Over.");
             } 
         }
