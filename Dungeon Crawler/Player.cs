@@ -32,29 +32,30 @@ namespace DevelopHerShani
                 bool isPlayerTurn = true;
                 room.currentMonster.ResetMonster(room.currentMonster);
 
-                Console.WriteLine("Let the Battle Begine!");
+                Console.WriteLine("Press Enter to start the Battle!");
                 Console.ReadLine();
                 while (player.hp > 0 && room.currentMonster.currentHp > 0)
                 {
                     if (isPlayerTurn)
                     {
-                        Console.WriteLine("It's your turn! Kill it you hear me?!");
+                        Console.WriteLine("It's your turn to attack : press enter when you're ready! ");
+                        Console.ReadLine();
                         room.currentMonster.currentHp = room.currentMonster.GetAttacked(room.currentMonster, player);
                         player.power = player.Attack(room.currentMonster, player);
-                        Console.WriteLine(
-                            $"Keep up: your power is : {player.power} and your currentHp is: {player.hp}");
-                        Console.WriteLine(
-                            $"Monster's stats: power: {room.currentMonster.currentPower} , hp is: {room.currentMonster.currentHp}");
+                        Console.WriteLine($"Keep up: your power is : {player.power} and your currentHp is: {player.hp}");
+                        Console.WriteLine($"Monster's stats: power: {room.currentMonster.currentPower} , hp is: {room.currentMonster.currentHp}");
+                        Console.WriteLine();
 
                     }
                     else
                     {
-                        Console.WriteLine("Be Carefull from the monster!");
+                        Console.WriteLine("Bewear the monster is attacking you :");
                         player.hp = player.GetAttacked(room.currentMonster, player);
                         room.currentMonster.currentPower = room.currentMonster.Attack(room.currentMonster, player);
+                        Console.WriteLine();
                         Console.WriteLine($"Your stats are: your power is {player.power} and your hp is {player.hp}");
-                        Console.WriteLine(
-                            $"Monster's stats: power : {room.currentMonster.currentPower}, hp : {room.currentMonster.currentHp}");
+                        Console.WriteLine($"Monster's stats: power : {room.currentMonster.currentPower}, hp : {room.currentMonster.currentHp}");
+                        Console.WriteLine();
                     }
 
                     isPlayerTurn = !isPlayerTurn;

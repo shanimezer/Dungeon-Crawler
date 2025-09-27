@@ -17,7 +17,7 @@ namespace DevelopHerShani
 			Console.WriteLine($"Room Location : {room.displayTxt}");
 			room.currentMonster = new Monster();
 			room.currentMonster = room.currentMonster.CreateMonster(room.level);
-			isMonsterAlive = true;
+			room.isMonsterAlive = true;
 			return room;
 		}
 	}

@@ -22,7 +22,9 @@ namespace DevelopHerShani
             int c;
             while (gamePlay.player.lifeC > 1 && gamePlay.player.score < gamePlay.dungeon.rooms.Length)
             {
+                
                 Console.WriteLine("");
+                Dungeon.DisplayDungeonMap(gamePlay.dungeon);
                 Console.WriteLine("Which Room would you like to explore?");
                 r = ReadValidIntFronUser("Enter room's row number: ") - 1;
                 c = ReadValidIntFronUser("Enter room's column number: ") - 1;

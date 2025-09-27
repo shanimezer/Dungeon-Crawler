@@ -34,6 +34,7 @@ public class Dungeon
                 dungeon.rooms[row,col] =  new Room().CreateRoom(col, row);
             }
         }
+        
         return dungeon;
     }
 
@@ -48,8 +49,19 @@ public class Dungeon
         } 
     }
 
-    public static void displayDungeonMap(Dungeon dungeon)
+    public static void DisplayDungeonMap(Dungeon dungeon)
     {
-        
+        //should print a map of the rooms so it'll be eazier to choose.
+        Console.WriteLine("Here's The Dungeon's Structure [from bottom's up] : ");
+        for (int row = dungeon.rLength; row > 0; row--)
+        {
+            Console.Write($"{row} | ");
+            
+            for (int col = 0; col < dungeon.cLength; col++)
+            {
+               Console.Write($"{col+1} "); 
+            }
+            Console.WriteLine();
+        }  
     }
 }
